@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset=utf-8 />
+  <title>bg-splitter</title>
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+  <style>
+    body
+    {
+      margin: 0px;
+    }
+  </style>
+</head>
+<body>
+  <bg-splitter orientation="horizontal">
+    <bg-pane min-size="100" style="background: #eee">Pane 1</bg-pane>
+    <bg-pane min-size="150">
+      <bg-splitter orientation="vertical">
+        <bg-pane min-size="100" style="background: #ddd">Pane 2</bg-pane>
+        <bg-pane min-size="150">Pane 3</bg-pane>
+      </bg-splitter>
+    </bg-pane>
+  </bg-splitter>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+  <script src="js/splitter.js"></script>
+  <script>
+    angular.module('myApp', ['bgDirectives']);
+  </script>
+</body>
+</html>
