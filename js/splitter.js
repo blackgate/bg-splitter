@@ -23,9 +23,8 @@ angular.module('bgDirectives', [])
         var pane1 = scope.panes[0];
         var pane2 = scope.panes[1];
         var vertical = scope.orientation == 'vertical';
-        var sizeProp = vertical ? 'min-height' : 'min-width';
-        var pane1Min = parseInt(pane1.elem.css(sizeProp), 10) || 0;
-        var pane2Min = parseInt(pane2.elem.css(sizeProp), 10) || 0;
+        var pane1Min = pane1.minSize || 0;
+        var pane2Min = pane2.minSize || 0;
         var drag = false;
         
         pane1.elem.after(handler);
@@ -41,8 +40,8 @@ angular.module('bgDirectives', [])
             var height = bounds.bottom - bounds.top;
             pos = ev.clientY - bounds.top;
 
-            if (pos < pane1.minSize) return;
-            if (height - pos < pane2.minSize) return;
+            if (pos < pane1Min) return;
+            if (height - pos < pane2Min) return;
 
             handler.css('top', pos + 'px');
             pane1.elem.css('height', pos + 'px');
@@ -53,8 +52,8 @@ angular.module('bgDirectives', [])
             var width = bounds.right - bounds.left;
             pos = ev.clientX - bounds.left;
 
-            if (pos < pane1.minSize) return;
-            if (width - pos < pane2.minSize) return;
+            if (pos < pane1Min) return;
+            if (width - pos < pane2Min) return;
 
             handler.css('left', pos + 'px');
             pane1.elem.css('width', pos + 'px');
