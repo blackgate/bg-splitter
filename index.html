@@ -8,16 +8,22 @@
     body
     {
       margin: 0px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .pane-container
+    {
+      padding: 10px;
     }
   </style>
 </head>
 <body>
   <bg-splitter orientation="horizontal">
-    <bg-pane min-size="100" style="background: #eee">Pane 1</bg-pane>
+    <bg-pane min-size="100"><div class="pane-container">Pane 1</div></bg-pane>
     <bg-pane min-size="150">
       <bg-splitter orientation="vertical">
-        <bg-pane min-size="100" style="background: #ddd">Pane 2</bg-pane>
-        <bg-pane min-size="150">Pane 3</bg-pane>
+        <bg-pane min-size="100" class="pane-container">Pane 2</bg-pane>
+        <bg-pane min-size="150" class="pane-container">Pane 3</bg-pane>
       </bg-splitter>
     </bg-pane>
   </bg-splitter>
