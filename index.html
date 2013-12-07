@@ -7,6 +7,20 @@
     <meta name="description" content="bg-splitter : Simple pane splitter for angular.js" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/splitter.css">
+    <style type="text/css">
+    	.pane-wrapper
+    	{
+    		position: relative;
+    		border: 1px solid #aaa;
+    		height: 300px;
+    	}
+
+    	.pane-container
+    	{
+    		padding: 10px;
+    	}
+    </style>
 
     <title>bg-splitter</title>
   </head>
@@ -37,26 +51,34 @@
 <p>Simple pane splitter for angular.js </p>
 
 <h2>
-<a name="sample" class="anchor" href="#sample"><span class="octicon octicon-link"></span></a>Sample</h2>
+<a name="sample" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
 
-<bg-splitter orientation="horizontal">
-    <bg-pane min-size="100" style="background: #eee">Pane 1</bg-pane>
+<div class="pane-wrapper">
+	<bg-splitter orientation="horizontal">
+    <bg-pane min-size="100">
+    	<div class="pane-container">Pane 1</div>
+    </bg-pane>
     <bg-pane min-size="150">
       <bg-splitter orientation="vertical">
-        <bg-pane min-size="100" style="background: #ddd">Pane 2</bg-pane>
-        <bg-pane min-size="150">Pane 3</bg-pane>
+        <bg-pane min-size="50">
+        	<div class="pane-container">Pane 2</div>
+        </bg-pane>
+        <bg-pane min-size="50">
+        	<div class="pane-container">Pane 3</div>
+        </bg-pane>
       </bg-splitter>
     </bg-pane>
-</bg-splitter>
+  </bg-splitter>
+</div>
 
 <p>HTML:</p>
 
 <div class="highlight highlight-html"><pre><span class="nt">&lt;bg-splitter</span> <span class="na">orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"100"</span> <span class="na">style=</span><span class="s">"background: #eee"</span><span class="nt">&gt;</span>Pane 1<span class="nt">&lt;/bg-pane&gt;</span>
+    <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"100"</span><span class="nt">&gt;</span>Pane 1<span class="nt">&lt;/bg-pane&gt;</span>
     <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"150"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;bg-splitter</span> <span class="na">orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"100"</span> <span class="na">style=</span><span class="s">"background: #ddd"</span><span class="nt">&gt;</span>Pane 2<span class="nt">&lt;/bg-pane&gt;</span>
-        <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"150"</span><span class="nt">&gt;</span>Pane 3<span class="nt">&lt;/bg-pane&gt;</span>
+        <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"50"</span><span class="nt">&gt;</span>Pane 2<span class="nt">&lt;/bg-pane&gt;</span>
+        <span class="nt">&lt;bg-pane</span> <span class="na">min-size=</span><span class="s">"50"</span><span class="nt">&gt;</span>Pane 3<span class="nt">&lt;/bg-pane&gt;</span>
       <span class="nt">&lt;/bg-splitter&gt;</span>
     <span class="nt">&lt;/bg-pane&gt;</span>
 <span class="nt">&lt;/bg-splitter&gt;</span>
@@ -66,6 +88,7 @@
 
 <div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'bgDirectives'</span><span class="p">]);</span>
 </pre></div>
+
       </section>
     </div>
 
@@ -78,7 +101,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-    <script src="https://raw.github.com/blackgate/bg-splitter/master/js/splitter.js"></script>
+    <script src="javascripts/splitter.js"></script>
     <script>
       angular.module('myApp', ['bgDirectives']);
     </script>
