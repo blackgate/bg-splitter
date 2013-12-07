@@ -39,6 +39,16 @@
 <h2>
 <a name="sample" class="anchor" href="#sample"><span class="octicon octicon-link"></span></a>Sample</h2>
 
+<bg-splitter orientation="horizontal">
+    <bg-pane min-size="100" style="background: #eee">Pane 1</bg-pane>
+    <bg-pane min-size="150">
+      <bg-splitter orientation="vertical">
+        <bg-pane min-size="100" style="background: #ddd">Pane 2</bg-pane>
+        <bg-pane min-size="150">Pane 3</bg-pane>
+      </bg-splitter>
+    </bg-pane>
+</bg-splitter>
+
 <p>HTML:</p>
 
 <div class="highlight highlight-html"><pre><span class="nt">&lt;bg-splitter</span> <span class="na">orientation=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
@@ -67,7 +77,11 @@
       </footer>
     </div>
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+    <script src="https://raw.github.com/blackgate/bg-splitter/master/js/splitter.js"></script>
+    <script>
+      angular.module('myApp', ['bgDirectives']);
+    </script>
 
   </body>
 </html>
