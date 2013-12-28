@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset=utf-8 />
+  <title>splitter</title>
+  <style type="text/css">
+       div[splitter]{
+           height:200px;
+           left:0px;
+           width: 800px;
+           border: 2px solid black;
+       }
+       .hpane{
+           min-width: 10px;
+       }
+       .hpane1{
+           width:100px;
+           height: 100%;
+           border: 2px solid green;
+       }
+       .hpane2{
+           top: 0px;
+           left:100px;
+           height: 50%;
+           width:100px;
+           border: 2px solid red;
+           overflow:hidden;
+       }
+       .hpane3{
+           left:200px;
+           min-width: 70px;
+           width:100px;
+           border: 2px solid purple;
+       }
+       .hpane4{
+           left:300px;
+           min-width: 70px;
+           width:100px;
+           border: 2px solid purple;
+       }
+       .hpane5{
+           left:400px;
+           min-width: 30px;
+           max-width: 60px;
+           width:40px;
+           border: 2px solid purple;
+       }
+       .hpane6{
+           left:500px;
+           width:40px;
+           border: 2px solid #df30db;
+       }
+       .horizontal.split-handler{
+           padding: 0 0 0 0;
+           width: 4px;
+           height: 100%;
+           cursor: ew-resize;
+           background-color: black;
+           z-index:999;
+       }
+   </style>
+</head>
+<body>
+  <div splitter>
+      <div class="hpane hpane1">1 Lorem ipsum dolor </div>
+      <div class="hpane hpane2">2 est iusto mollitia nisi odio quas rerum totam?</div>
+      <div class="hpane hpane3">3 iusto mollitia nisi odio quas rerum totam?</div>
+      <div class="hpane hpane4">4sfdggf</div>
+      <div class="hpane hpane5">5 fsdgdsgg?</div>
+      <div class="hpane hpane6">6 pane 6 pane6</div>
+      </div>
+  </div>
+  <script src="angular.js"></script>
+  <script src="splitter.js"></script>
+  <script>
+    angular.module('myApp', ['splitter']);
+  </script>
+</body>
+</html>

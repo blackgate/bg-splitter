@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset=utf-8 />
+  <title>splitter</title>
+  <style type="text/css">
+      div[splitter]{
+          width:200px;
+          top:0px;
+          height: 800px;
+          border: 2px solid black;
+      }
+      .vpane{
+          min-height: 10px;
+      }
+      .vpane1{
+          height:100px;
+          width: 100%;
+          border: 2px solid green;
+      }
+      .vpane2{
+          top:100px;
+          width: 50%;
+          height:100px;
+          border: 2px solid red;
+          overflow:hidden;
+      }
+      .vpane3{
+          top:200px;
+          min-height: 70px;
+          height:100px;
+          border: 2px solid purple;
+      }
+      .vpane4{
+          top:300px;
+          min-height: 70px;
+          height:100px;
+          border: 2px solid purple;
+      }
+      .vpane5{
+          top:400px;
+          min-height: 30px;
+          max-height: 60px;
+          height:40px;
+          border: 2px solid purple;
+      }
+      .vpane6{
+          top:500px;
+          height:40px;
+          border: 2px solid darkslategray;
+      }
+      .vertical.split-handler{
+          padding: 0 0 0 0;
+          height: 4px;
+          width: 100%;
+          cursor: ns-resize;
+          background-color: black;
+          z-index:999;
+      }
+  </style>
+</head>
+<body>
+  <div splitter vertical="true">
+      <div class="vpane vpane1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet aut deserunt eos modi, molestiae recusandae velit veritatis voluptatibus voluptatum!</div>
+      <div class="vpane vpane2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ipsum magni maxime non perspiciatis possimus reiciendis reprehenderit sit? Obcaecati, vero?</div>
+      <div class="vpane vpane3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ipsum magni maxime non perspiciatis possimus reiciendis reprehenderit sit? Obcaecati, vero?</div>
+      <div class="vpane vpane4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ipsum magni maxime non perspiciatis possimus reiciendis reprehenderit sit? Obcaecati, vero?</div>
+  </div>
+  <script src="angular.js"></script>
+  <script src="splitter.js"></script>
+  <script>
+    angular.module('myApp', ['splitter']);
+  </script>
+</body>
+</html>
