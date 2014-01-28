@@ -28,15 +28,27 @@ angular.module('bgDirectives', [])
         var drag = false;
         
         pane1.elem.after(handler);
+   
+        var initPane1 = (!isNaN(pane1.initSize));     
+        var initPane2 = (!isNaN(pane2.initSize));    
+        var initLOrT;
+        var initWOrH;
         
-        if (! isNaN(pane1.initSize)) {
-          handler.css('left', pane1.initSize + 'px');
-          pane1.elem.css('width', pane1.initSize + 'px');
-          pane2.elem.css('left', pane1.initSize + 'px');
+        if (vertical) {
+          initLOrT = 'top';
+          initWOrH = 'height';
+        } else {
+          initLOrT = 'left';
+          initWOrH = 'width';
         }
-        if (! isNaN(pane2.initSize)) {
-           throw new Error("second pane cannot have init-size: "
-             + "it is implied by the initSize on the first pane.");
+
+        if (initPane2) {
+          throw new Error("second pane cannot have init-size attribute");
+        }
+        if (initPane1) {
+          handler.css(   initLOrT, pane1.initSize + 'px');
+          pane1.elem.css(initWOrH, pane1.initSize + 'px');
+          pane2.elem.css(initLOrT, pane1.initSize + 'px');
         }
 
         element.bind('mousemove', function (ev) {
