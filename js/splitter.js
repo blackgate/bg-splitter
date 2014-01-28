@@ -29,6 +29,16 @@ angular.module('bgDirectives', [])
         
         pane1.elem.after(handler);
         
+        if (! isNaN(pane1.initSize)) {
+          handler.css('left', pane1.initSize + 'px');
+          pane1.elem.css('width', pane1.initSize + 'px');
+          pane2.elem.css('left', pane1.initSize + 'px');
+        }
+        if (! isNaN(pane2.initSize)) {
+           throw new Error("second pane cannot have init-size: "
+             + "it is implied by the initSize on the first pane.");
+        }
+
         element.bind('mousemove', function (ev) {
           if (!drag) return;
           
@@ -79,7 +89,8 @@ angular.module('bgDirectives', [])
       replace: true,
       transclude: true,
       scope: {
-        minSize: '='
+        minSize: '=',
+        initSize: '='
       },
       template: '<div class="split-pane{{index}}" ng-transclude></div>',
       link: function(scope, element, attrs, bgSplitterCtrl) {
