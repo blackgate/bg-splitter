@@ -43,12 +43,13 @@ angular.module('bgDirectives', [])
         }
 
         if (initPane2) {
-          throw new Error("second pane cannot have init-size attribute");
+          var parheight = pane1.elem[0].parentNode.offsetHeight;
+          initPane1 = parheight-pane2.initSize;  
         }
         if (initPane1) {
-          handler.css(   initLOrT, pane1.initSize + 'px');
-          pane1.elem.css(initWOrH, pane1.initSize + 'px');
-          pane2.elem.css(initLOrT, pane1.initSize + 'px');
+          handler.css(   initLOrT, initPane1 + 'px');
+          pane1.elem.css(initWOrH, initPane1 + 'px');
+          pane2.elem.css(initLOrT, initPane1 + 'px');
         }
 
         element.bind('mousemove', function (ev) {
