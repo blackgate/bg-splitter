@@ -17,6 +17,18 @@ angular.module('bgDirectives', [])
           $scope.panes.push(pane);
           return $scope.panes.length;
         };
+        $scope.getSize = function(pane){
+          var paneel = $scope.panes[pane-1];
+          var vertical = $scope.orientation == 'vertical';
+          if (vertical) {
+            initLOrT = 'top';
+            initWOrH = 'height';
+          } else {
+            initLOrT = 'left';
+            initWOrH = 'width';
+          }
+          return paneel.elem.css(initWOrH);
+        }
         $scope.setSize = function(pane, size){          
           var pane1 = $scope.panes[0];
           var pane2 = $scope.panes[1];
