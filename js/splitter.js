@@ -42,16 +42,24 @@ angular.module('bgDirectives', [])
           initWOrH = 'width';
         }
 
+        var pane1initsize = pane1.initSize;
         if (initPane2) {
-          var parheight = pane1.elem[0].parentNode.offsetHeight;
-          initPane1 = parheight-pane2.initSize;  
-        }
-        if (initPane1) {
-          handler.css(   initLOrT, initPane1 + 'px');
-          pane1.elem.css(initWOrH, initPane1 + 'px');
-          pane2.elem.css(initLOrT, initPane1 + 'px');
+          if (vertical){
+            var parheight = pane1.elem[0].parentNode.offsetHeight;
+            pane1initsize = parheight-pane2.initSize;  
+          }
+          else{
+            var parwidth = pane1.elem[0].parentNode.offsetWidth;
+            pane1initsize = parwidth-pane2.initSize;  
+          }
+          initPane1 = (!isNaN(pane1initsize));  
         }
 
+        if (initPane1) {
+          handler.css(initLOrT, pane1initsize + 'px');
+          pane1.elem.css(initWOrH, pane1initsize + 'px');
+          pane2.elem.css(initLOrT, pane1initsize + 'px');
+        }
         element.bind('mousemove', function (ev) {
           if (!drag) return;
           
