@@ -8,7 +8,7 @@ angular.module('bgDirectives', [])
         orientation: '@'
       },      
       template: '<div class="split-panes {{orientation}}" ng-transclude></div>',
-      controller: function ($scope) {
+      controller: function ($scope, $element) {
         $scope.panes = [];
         
         this.addPane = function(pane){
@@ -17,9 +17,40 @@ angular.module('bgDirectives', [])
           $scope.panes.push(pane);
           return $scope.panes.length;
         };
+        $scope.setSize = function(pane, size){          
+          var pane1 = $scope.panes[0];
+          var pane2 = $scope.panes[1];
+          var pane1size = 0;          
+          if (pane==1){
+            pane1size = size;
+          }
+          if (pane==2) {
+            if (vertical){
+              var parheight = pane1.elem[0].parentNode.offsetHeight;
+              pane1size = parheight-size;  
+            }
+            else{
+              var parwidth = pane1.elem[0].parentNode.offsetWidth;
+              pane1size = parwidth-size;  
+            }
+          }
+          var handler = $scope.handler;
+          var vertical = $scope.orientation == 'vertical';
+          if (vertical) {
+            initLOrT = 'top';
+            initWOrH = 'height';
+          } else {
+            initLOrT = 'left';
+            initWOrH = 'width';
+          }
+          handler.css(initLOrT, pane1size + 'px');
+          pane1.elem.css(initWOrH, pane1size + 'px');
+          pane2.elem.css(initLOrT, pane1size + 'px');
+        };
       },
       link: function(scope, element, attrs) {
         var handler = angular.element('<div class="split-handler"></div>');
+        scope.handler = handler;
         var pane1 = scope.panes[0];
         var pane2 = scope.panes[1];
         var vertical = scope.orientation == 'vertical';
@@ -41,7 +72,6 @@ angular.module('bgDirectives', [])
           initLOrT = 'left';
           initWOrH = 'width';
         }
-
         var pane1initsize = pane1.initSize;
         if (initPane2) {
           if (vertical){
@@ -59,7 +89,7 @@ angular.module('bgDirectives', [])
           handler.css(initLOrT, pane1initsize + 'px');
           pane1.elem.css(initWOrH, pane1initsize + 'px');
           pane2.elem.css(initLOrT, pane1initsize + 'px');
-        }
+        }        
         element.bind('mousemove', function (ev) {
           if (!drag) return;
           
@@ -111,7 +141,8 @@ angular.module('bgDirectives', [])
       transclude: true,
       scope: {
         minSize: '=',
-        initSize: '='
+        initSize: '=',
+        setSize: '='
       },
       template: '<div class="split-pane{{index}}" ng-transclude></div>',
       link: function(scope, element, attrs, bgSplitterCtrl) {
