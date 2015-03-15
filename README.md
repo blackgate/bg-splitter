@@ -1,3 +1,5 @@
+**NOTE: I no longer maintain this project. Feel free to fork it if you need to.**
+
 # Angular pane splitter
 
 Simple pane splitter for angular.js 
