@@ -8,7 +8,7 @@ angular.module('bgDirectives', [])
         orientation: '@'
       },      
       template: '<div class="split-panes {{orientation}}" ng-transclude></div>',
-      controller: function ($scope) {
+      controller: ['$scope', function ($scope) {
         $scope.panes = [];
         
         this.addPane = function(pane){
@@ -17,7 +17,7 @@ angular.module('bgDirectives', [])
           $scope.panes.push(pane);
           return $scope.panes.length;
         };
-      },
+      }],
       link: function(scope, element, attrs) {
         var handler = angular.element('<div class="split-handler"></div>');
         var pane1 = scope.panes[0];
