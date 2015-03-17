@@ -6,7 +6,7 @@
     "blackgate"
   ],
   "description": "Simple pane splitter for angular.js",
-  "main": "js/splitter.js",
+  "main": ["js/splitter.js", "css/style.css"],
   "keywords": [
     "splitter",
     "angularjs",
