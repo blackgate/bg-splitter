@@ -22,21 +22,35 @@ angular.module('bgDirectives', [])
         var handler = angular.element('<div class="split-handler"></div>');
         var pane1 = scope.panes[0];
         var pane2 = scope.panes[1];
-        var vertical = scope.orientation == 'vertical';
+
         var pane1Min = pane1.minSize || 0;
         var pane2Min = pane2.minSize || 0;
         var drag = false;
         
         pane1.elem.after(handler);
-        
+
+        var vertical;
+        scope.$watch('orientation', function() {
+          vertical = scope.orientation == 'vertical';
+          if (vertical) {
+            handler.css('left', '');
+            pane1.elem.css('width', '');
+            pane2.elem.css('left', '');
+          }
+          else {
+            handler.css('top', '');
+            pane1.elem.css('height', '');
+            pane2.elem.css('top', '');
+          }
+        });
+
         element.bind('mousemove', function (ev) {
           if (!drag) return;
-          
+
           var bounds = element[0].getBoundingClientRect();
           var pos = 0;
-          
-          if (vertical) {
 
+          if (vertical) {
             var height = bounds.bottom - bounds.top;
             pos = ev.clientY - bounds.top;
 
