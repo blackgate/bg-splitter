@@ -29,7 +29,7 @@ angular.module('bgDirectives', [])
         
         pane1.elem.after(handler);
         
-        element.bind('mousemove', function (ev) {
+        element.bind('mousemove touchmove', function (ev) {
           if (!drag) return;
           
           var bounds = element[0].getBoundingClientRect();
@@ -61,12 +61,12 @@ angular.module('bgDirectives', [])
           }
         });
     
-        handler.bind('mousedown', function (ev) { 
+        handler.bind('mousedown touchstart', function (ev) { 
           ev.preventDefault();
           drag = true; 
         });
     
-        angular.element(document).bind('mouseup', function (ev) {
+        angular.element(document).bind('mouseup touchend', function (ev) {
           drag = false;
         });
       }
