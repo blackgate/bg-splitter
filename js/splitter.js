@@ -46,6 +46,8 @@ angular.module('bgDirectives', [])
             handler.css('top', pos + 'px');
             pane1.elem.css('height', pos + 'px');
             pane2.elem.css('top', pos + 'px');
+
+            scope.$broadcast("bg-splitter-resized", {height: pos});
       
           } else {
 
@@ -58,6 +60,8 @@ angular.module('bgDirectives', [])
             handler.css('left', pos + 'px');
             pane1.elem.css('width', pos + 'px');
             pane2.elem.css('left', pos + 'px');
+
+            scope.$broadcast("bg-splitter-resized", {width: pos});
           }
         });
     
