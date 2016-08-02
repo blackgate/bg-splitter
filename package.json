@@ -1,0 +1,10 @@
+{
+  "name": "bg-splitter",
+  "version": "0.1.0",
+  "main": "js/splitter.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swimlane/bg-splitter.git"
+  },
+  "license": "MIT"
+}
