@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset=utf-8 />
+  <title>splitter</title>
+  <style type="text/css">
+       div[splitter]{
+           height:400px;
+           left:0px;
+           top: 2px;
+           width: 800px;
+           border: 2px solid black;
+       }
+       .hpane{
+           min-width: 10px;
+       }
+       .hpane1{
+           width:100px;
+           height: 100%;
+           border: 2px solid green;
+       }
+       .hpane2{
+           top: 0px;
+           left:100px;
+           height: 50%;
+           width:100px;
+           border: 2px solid red;
+           overflow:hidden;
+       }
+       .hpane3{
+           left:200px;
+           min-width: 70px;
+           width:100px;
+           border: 2px solid purple;
+       }
+       .hpane4{
+           left:300px;
+           min-width: 70px;
+           width:100px;
+           border: 2px solid purple;
+       }
+       .hpane5{
+           left:400px;
+           min-width: 30px;
+           max-width: 60px;
+           width:40px;
+           border: 2px solid purple;
+       }
+       .hpane6{
+           left:500px;
+           width:40px;
+           border: 2px solid darkslategray;
+       }
+       .horizontal.split-handler{
+           padding: 0 0 0 0;
+           width: 4px;
+           height: 100%;
+           cursor: ew-resize;
+           background-color: black;
+           z-index:999;
+       }
+       div#vertical[splitter]{
+           width:200px;
+           top:0px;
+           padding: 0 0 0 0;
+           margin: 0 0 0 0;
+           height: 400px;
+           width: 200px;
+           border: 2px solid black;
+       }
+       .vpane{
+           min-height: 10px;
+       }
+       .vpane1{
+           height:100px;
+           width: 100%;
+           border: 2px solid green;
+       }
+       .vpane2{
+           top:100px;
+           width: 50%;
+           height:100px;
+           border: 2px solid red;
+           overflow:hidden;
+       }
+       .vpane3{
+           top:200px;
+           min-height: 70px;
+           height:100px;
+           border: 2px solid purple;
+       }
+       .vpane4{
+           top:300px;
+           min-height: 70px;
+           height:100px;
+           border: 2px solid purple;
+       }
+       .vpane5{
+           top:400px;
+           min-height: 30px;
+           max-height: 60px;
+           height:40px;
+           border: 2px solid purple;
+       }
+       .vpane6{
+           top:500px;
+           height:40px;
+           border: 2px solid darkslategray;
+       }
+       .vertical.split-handler{
+           padding: 0 0 0 0;
+           height: 4px;
+           width: 100%;
+           cursor: ns-resize;
+           background-color: black;
+           z-index:999;
+       }
+  </style>
+</head>
+<body>
+  <div splitter>
+      <div class="hpane hpane1">1 Lorem ipsum dolor </div>
+      <div class="hpane hpane2">2 est iusto mollitia nisi odio quas rerum totam?</div>
+      <div class="hpane hpane3">3 iusto mollitia nisi odio quas rerum totam?</div>
+      <div class="hpane hpane4">4sfdggf</div>
+      <div class="hpane hpane5">5 fsdgdsgg?</div>
+      <div class="hpane hpane6">
+          <div splitter id ="vertical" vertical="true">
+              <div class="vpane vpane1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet aut deserunt eos modi, molestiae recusandae velit veritatis voluptatibus voluptatum!</div>
+              <div class="vpane vpane2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ipsum magni maxime non perspiciatis possimus reiciendis reprehenderit sit? Obcaecati, vero?</div>
+              <div class="vpane vpane3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ipsum magni maxime non perspiciatis possimus reiciendis reprehenderit sit? Obcaecati, vero?</div>
+              <div class="vpane vpane4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, ipsum magni maxime non perspiciatis possimus reiciendis reprehenderit sit? Obcaecati, vero?</div>
+          </div>
+      </div>
+      </div>
+  </div>
+  <script src="angular.js"></script>
+  <script src="splitter.js"></script>
+  <script>
+    angular.module('myApp', ['splitter']);
+  </script>
+</body>
+</html>
